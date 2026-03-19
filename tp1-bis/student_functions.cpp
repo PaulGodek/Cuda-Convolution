@@ -1,31 +1,29 @@
 #include "student_functions.h"
 #include <algorithm>
+#include <iostream>
 
 void normalizeDepth(DepthImage& depth) {
     if (depth.data.empty()) {
         return;
     }
 
-    // TODO: Find the minimum and maximum depth values in the image.
-
-    uint16_t min = NULL;
-    uint16_t max = NULL;
+    // Find the minimum and maximum depth values in the image.
+    uint16_t min = depth.data[0];
+    uint16_t max = depth.data[0];
     for (uint16_t value : depth.data) {
-        if (min == NULL || value < min) min = value;
-        if (min == NULL || value > max) max = value;
+        if (value < min) min = value;
+        if (value > max) max = value;
     }
 
-    // Avoid division by zero if all values are the same.
-
-    // TODO: Apply the linear normalization formula to map values to [0, 65535].
-
-
+    // Apply the linear normalization formula to map values to [0, 65535].
+    for (size_t i = 0; i < depth.data.size(); i++) {
+        depth.data[i] = 0 + (depth.data[i] - min) / (max - min) * (65535 - 0);
+        // Thanks https://stackoverflow.com/a/28916570
+    }
 }
 
 void invertDepth(DepthImage& depth) {
     for (auto& value : depth.data) {
-        // TODO: Invert each depth value in place with: 65535 - value.
-        // Ca le fait pas déjà ??
         value = static_cast<uint16_t>(65535u - value);
     }
 }
@@ -51,53 +49,90 @@ Image8 connex8ComparaisonMask(const Image8& mask, uint8_t comparative) {
     result.data.resize(mask.data.size(), 0);
 
     // Apply 8 connex modif
-    for (size_t i = 0; i < mask.data.size(); i++) {
+    for (size_t i = 0; i < mask.height; i++) {
+        for (size_t j = 0; j < mask.width; j++) {
 
-        // Set if you can check the value on the right, left, up or down
-        int moduloHeight = i % mask.height;
-        bool canGoHigher = moduloHeight != 0;
-        bool canGoLower = moduloHeight != mask.height - 1;
-        
-        int moduloWidth = i % mask.width;
-        bool canGoLeft = moduloWidth != 0;
-        bool canGoRight = moduloWidth != mask.width - 1;
+            // Set if you can check the value on the right, left, up or down
+            bool canGoLeft = j > 0;
+            bool canGoRight = j < mask.width - 1;
+            bool canGoHigher = i > 0;
+            bool canGoLower = i < mask.height - 1;
 
-        // Check if the neighboors pass the comparaison 
-        uint8_t value = mask.data[i];
-        bool changeValue = false;
-        if (canGoHigher) {
-            if (mask.data[i - mask.width] == comparative) changeValue = true;
+            // Check if the neighboors pass the comparaison 
+            uint8_t value = mask.data[j + (i * mask.width)];
+            bool changeValue = false;
+            if (canGoHigher) {
+                if (mask.data[j + ((i - 1) * mask.width)] == comparative) changeValue = true;
+                if (canGoRight) {
+                    if (mask.data[j + 1 + ((i - 1) * mask.width)] == comparative) changeValue = true;
+                }
+                if (canGoLeft) {
+                    if (mask.data[j - 1 + ((i - 1) * mask.width)] == comparative) changeValue = true;
+                }
+            }
+            if (canGoLower) {
+                if (mask.data[j + ((i + 1) * mask.width)] == comparative) changeValue = true;
+                if (canGoRight) {
+                    if (mask.data[j + 1 + ((i + 1) * mask.width)] == comparative) changeValue = true;
+                }
+                if (canGoLeft) {
+                    if (mask.data[j - 1 + ((i + 1) * mask.width)] == comparative) changeValue = true;
+                }
+            }
             if (canGoRight) {
-                if (mask.data[i - mask.width + 1] == comparative) changeValue = true;
-            }
+                if (mask.data[j + 1 + (i * mask.width)] == comparative) changeValue = true;
+            } 
             if (canGoLeft) {
-                if (mask.data[i - mask.width - 1] == comparative) changeValue = true;
+                if (mask.data[j - 1 + (i * mask.width)] == comparative) changeValue = true;
             }
-        }
-        if (canGoLower) {
-            if (mask.data[i + mask.width] == 0) changeValue = true;
-            if (canGoRight) {
-                if (mask.data[i + mask.width + 1] == comparative) changeValue = true;
-            }
-            if (canGoLeft) {
-                if (mask.data[i + mask.width - 1] == comparative) changeValue = true;
-            }
-        }
-        if (canGoRight) {
-            if (mask.data[i + 1] == comparative) changeValue = true;
-        } 
-        if (canGoLeft) {
-            if (mask.data[i - 1] == comparative) changeValue = true;
-        }
 
-        if (changeValue) {
-            result.data[i] = comparative;
+            if (changeValue) {
+                result.data[j + (i * mask.width)] = comparative;
+            }
+            else result.data[j + (i * mask.width)] = value;
         }
-        else result.data[i] = value;
     }
 
     return result;
 }
+
+// Résultat mieux de GPT-sama : 
+// ...existing code...
+// Image8 connex8ComparaisonMask(const Image8& mask, uint8_t comparative) {
+//     Image8 result;
+//     result.width = mask.width;
+//     result.height = mask.height;
+//     result.data.resize(mask.data.size(), 0);
+
+//     if (mask.width <= 0 || mask.height <= 0) return result;
+
+//     const int w = mask.width;
+//     const int h = mask.height;
+
+//     for (int i = 0; i < h; ++i) {
+//         for (int j = 0; j < w; ++j) {
+//             const int idx = j + i * w;
+//             const uint8_t value = mask.data[idx];
+//             bool changeValue = false;
+
+//             // check 8 neighbors
+//             for (int di = -1; di <= 1 && !changeValue; ++di) {
+//                 for (int dj = -1; dj <= 1 && !changeValue; ++dj) {
+//                     if (di == 0 && dj == 0) continue;
+//                     const int ni = i + di;
+//                     const int nj = j + dj;
+//                     if (ni < 0 || ni >= h || nj < 0 || nj >= w) continue;
+//                     const int nidx = nj + ni * w;
+//                     if (mask.data[nidx] == comparative) changeValue = true;
+//                 }
+//             }
+
+//             result.data[idx] = changeValue ? comparative : value;
+//         }
+//     }
+
+//     return result;
+// }
 
 Image8 erodeMask(const Image8& mask) {
     return connex8ComparaisonMask(mask, 0);

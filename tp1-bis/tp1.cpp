@@ -57,8 +57,14 @@ int main(int argc, char* argv[]) {
     }
 
     Image8 mask = thresholdDepth(depth, threshold);
+    cout << "J open le mask" << endl;
     mask = openMask(mask);
+    cout << "Je close le mask" << endl;
     mask = closeMask(mask);
+
+    saveImage(mask, "mask_temporaire.png");
+    return 0;
+
     Image8 croppedMask = cropMask(
         mask,
         kStudentConfig.cropX,
@@ -75,17 +81,23 @@ int main(int argc, char* argv[]) {
         kStudentConfig.cropW,
         kStudentConfig.cropH
     );
+    
 
     if (cropped.data.empty() || croppedMask.data.empty()) {
         cerr << "No foreground detected after thresholding and morphology." << endl;
         return 1;
     }
+    
 
     normalizeDepth(cropped);
+    
     invertDepth(cropped);
+    
 
     saveImage(croppedMask, "mask_final.png");
+    
     saveDepth(cropped, "foreground_depth.bin");
+    
 
     std::ofstream cropFile("mask_final_crop.txt");
     if (!cropFile) {
