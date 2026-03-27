@@ -1,0 +1,179 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_binding.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_binding.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.cu||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.cu||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\tp4.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tp4\\03_numpy_cuda\\pybind\\tp4.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tp4\\03_numpy_cuda\\pybind\\module\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tp4\\03_numpy_cuda\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\01_minimal\\pybind\\module\\mini_pybind\\bindings.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tp4\\01_minimal\\pybind\\module\\mini_pybind\\bindings.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\01_minimal\\pybind\\module\\setup.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tp4\\01_minimal\\pybind\\module\\setup.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\01_minimal\\pybind\\module\\mini_pybind\\cuda_add.cu||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tp4\\01_minimal\\pybind\\module\\mini_pybind\\cuda_add.cu||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "tp4.py",
+              "DocumentMoniker": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\tp4.py",
+              "RelativeDocumentMoniker": "tp4\\03_numpy_cuda\\pybind\\tp4.py",
+              "ToolTip": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\tp4.py",
+              "RelativeToolTip": "tp4\\03_numpy_cuda\\pybind\\tp4.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAA6AAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHfSURBVDhPpZCxaxNhGMZ/9zVJaUuDUlq1FBWLZBFTCXo4BFyU1qGKi4OkIHhkzF/g0KF00M2lR9YUdDDQQVAcJILoQUd1UNRmkhoRm8RL777v7nOoCZd4AcEH3uF5nvd73vd74X\u002BgtTai3LIsHeWDEEJct217a1DvwbIs7bpubFUqFW3b9naxWLwWfSOipAvHcfqqi0KhkMtms3cty1rsaomeG4FpmoMSANVqlXQ6nQMWgacMC4hOBchduEj\u002ByjKjScGh8SS1Wq3nxQZEN3j1eY/Vrfe8rTeQvsf89ARLS1cz5XIZ/uUGXxptQiVRUhJIybudXaZn52a7vbEBpmkyNb/A69YM9W8tDEJOTI2hpI\u002BSkvOZH2f13sNAB\u002B07sV9wHIdH9Unquz9RvoeUPtL3UFISKkky\u002BAT7HwTi6FpsgGma3N9\u002Bg5I\u002BKaFZyU8wOpJChwHnjiuE9wKCXyC/zsQGOI7DeELjtiUPbgky6Wd/HA3KBelC4AIpNfQGl88cQ0mfI5PugRhKkM2DUk0INYwtPI/dAGAlf4rbl06T6DyBVgeCABJzYPhwcm0V8ICNvwJKpVIf37h3IxSyKVAuBMDIYQAMw1jvaxwGrYNl3Xq5o79vat3Y3Nedj4\u002B11je7/m\u002BXOuyzFtDhUgAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-03-27T16:39:28.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "student_functions.h",
+              "DocumentMoniker": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.h",
+              "RelativeDocumentMoniker": "tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.h",
+              "ToolTip": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.h",
+              "RelativeToolTip": "tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-03-27T16:36:36.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "student_functions.cu",
+              "DocumentMoniker": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.cu",
+              "RelativeDocumentMoniker": "tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.cu",
+              "ToolTip": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.cu",
+              "RelativeToolTip": "tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_functions.cu",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-27T16:36:35.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "student_binding.cpp",
+              "DocumentMoniker": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_binding.cpp",
+              "RelativeDocumentMoniker": "tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_binding.cpp",
+              "ToolTip": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_binding.cpp",
+              "RelativeToolTip": "tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda\\student_binding.cpp",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-03-27T16:17:02.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\README.md",
+              "RelativeDocumentMoniker": "tp4\\03_numpy_cuda\\pybind\\module\\README.md",
+              "ToolTip": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\pybind\\module\\README.md",
+              "RelativeToolTip": "tp4\\03_numpy_cuda\\pybind\\module\\README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-03-27T16:11:42.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\README.md",
+              "RelativeDocumentMoniker": "tp4\\03_numpy_cuda\\README.md",
+              "ToolTip": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\03_numpy_cuda\\README.md",
+              "RelativeToolTip": "tp4\\03_numpy_cuda\\README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-03-27T16:11:38.07Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "bindings.cpp",
+              "DocumentMoniker": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\01_minimal\\pybind\\module\\mini_pybind\\bindings.cpp",
+              "RelativeDocumentMoniker": "tp4\\01_minimal\\pybind\\module\\mini_pybind\\bindings.cpp",
+              "ToolTip": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\01_minimal\\pybind\\module\\mini_pybind\\bindings.cpp",
+              "RelativeToolTip": "tp4\\01_minimal\\pybind\\module\\mini_pybind\\bindings.cpp",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-03-27T16:35:30.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "cuda_add.cu",
+              "DocumentMoniker": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\01_minimal\\pybind\\module\\mini_pybind\\cuda_add.cu",
+              "RelativeDocumentMoniker": "tp4\\01_minimal\\pybind\\module\\mini_pybind\\cuda_add.cu",
+              "ToolTip": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\01_minimal\\pybind\\module\\mini_pybind\\cuda_add.cu",
+              "RelativeToolTip": "tp4\\01_minimal\\pybind\\module\\mini_pybind\\cuda_add.cu",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-27T16:35:39.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "setup.py",
+              "DocumentMoniker": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\01_minimal\\pybind\\module\\setup.py",
+              "RelativeDocumentMoniker": "tp4\\01_minimal\\pybind\\module\\setup.py",
+              "ToolTip": "C:\\Users\\pagodek\\Documents\\Cuda-Convolution\\tp4\\01_minimal\\pybind\\module\\setup.py",
+              "RelativeToolTip": "tp4\\01_minimal\\pybind\\module\\setup.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHfSURBVDhPpZCxaxNhGMZ/9zVJaUuDUlq1FBWLZBFTCXo4BFyU1qGKi4OkIHhkzF/g0KF00M2lR9YUdDDQQVAcJILoQUd1UNRmkhoRm8RL777v7nOoCZd4AcEH3uF5nvd73vd74X\u002BgtTai3LIsHeWDEEJct217a1DvwbIs7bpubFUqFW3b9naxWLwWfSOipAvHcfqqi0KhkMtms3cty1rsaomeG4FpmoMSANVqlXQ6nQMWgacMC4hOBchduEj\u002ByjKjScGh8SS1Wq3nxQZEN3j1eY/Vrfe8rTeQvsf89ARLS1cz5XIZ/uUGXxptQiVRUhJIybudXaZn52a7vbEBpmkyNb/A69YM9W8tDEJOTI2hpI\u002BSkvOZH2f13sNAB\u002B07sV9wHIdH9Unquz9RvoeUPtL3UFISKkky\u002BAT7HwTi6FpsgGma3N9\u002Bg5I\u002BKaFZyU8wOpJChwHnjiuE9wKCXyC/zsQGOI7DeELjtiUPbgky6Wd/HA3KBelC4AIpNfQGl88cQ0mfI5PugRhKkM2DUk0INYwtPI/dAGAlf4rbl06T6DyBVgeCABJzYPhwcm0V8ICNvwJKpVIf37h3IxSyKVAuBMDIYQAMw1jvaxwGrYNl3Xq5o79vat3Y3Nedj4\u002B11je7/m\u002BXOuyzFtDhUgAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-03-27T16:35:45.768Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

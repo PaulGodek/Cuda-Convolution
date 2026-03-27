@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\tp4",
+    "\\tp4\\01_minimal",
+    "\\tp4\\02_numpy_bridge\\pybind",
+    "\\tp4\\02_numpy_bridge\\pybind\\module",
+    "\\tp4\\02_numpy_bridge\\pybind\\module\\tp4_pybind_bridge",
+    "\\tp4\\03_numpy_cuda",
+    "\\tp4\\03_numpy_cuda\\ctypes\\module",
+    "\\tp4\\03_numpy_cuda\\pybind",
+    "\\tp4\\03_numpy_cuda\\pybind\\module",
+    "\\tp4\\03_numpy_cuda\\pybind\\module\\tp4_pybind_cuda"
+  ],
+  "SelectedNode": "\\tp4\\03_numpy_cuda\\pybind\\tp4.py",
+  "PreviewInSolutionExplorer": false
+}

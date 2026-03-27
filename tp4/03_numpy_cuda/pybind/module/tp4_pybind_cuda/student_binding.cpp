@@ -52,5 +52,6 @@ PYBIND11_MODULE(_tp4_pybind_cuda, m) {
     //
     // Indice :
     // reprenez la meme idee qu'en partie 1 avec `m.def(...)`.
+    //m.def("threshold_depth", &threshol);
     throw std::runtime_error("Not implemented");
 }
