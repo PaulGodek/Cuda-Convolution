@@ -1,5 +1,8 @@
 README_private.md
 solution/
+.vs/
+.idea/
+.visual/
 
 # Binaries and libraries
 *.exe
@@ -33,3 +36,7 @@ solution/
 # Common generated data files
 *.bin
 *.txt
+*.pyd
+# Python caches and local build folders
+__pycache__/
+build/

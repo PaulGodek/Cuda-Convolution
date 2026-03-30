@@ -56,6 +56,30 @@ bool hasPngExtension(const std::string& path) {
     return extension == ".png";
 }
 
+bool readFileHeader(const std::string& path, std::vector<uint8_t>& header, size_t maxBytes) {
+    header.clear();
+
+    std::ifstream file(path, std::ios::binary);
+    if (!file) {
+        return false;
+    }
+
+    header.resize(maxBytes, 0);
+    file.read(reinterpret_cast<char*>(header.data()), static_cast<std::streamsize>(maxBytes));
+    header.resize(static_cast<size_t>(file.gcount()));
+    return !header.empty();
+}
+
+bool isBmpSignature(const std::vector<uint8_t>& header) {
+    return header.size() >= 2 && header[0] == 'B' && header[1] == 'M';
+}
+
+bool isPngSignature(const std::vector<uint8_t>& header) {
+    static const uint8_t pngSignature[8] = {0x89, 'P', 'N', 'G', 0x0D, 0x0A, 0x1A, 0x0A};
+    return header.size() >= sizeof(pngSignature) &&
+           std::equal(std::begin(pngSignature), std::end(pngSignature), header.begin());
+}
+
 uint16_t readU16(const std::vector<uint8_t>& bytes, size_t offset, bool littleEndian) {
     if (littleEndian) {
         return static_cast<uint16_t>(bytes[offset]) |
@@ -206,31 +230,62 @@ Image8 loadImageBMPInternal(const std::string& path) {
     const uint16_t bitsPerPixel = readU16(bytes, 28, true);
     const uint32_t compression = readU32(bytes, 30, true);
 
-    if (width <= 0 || height == 0 || planes != 1 || bitsPerPixel != 24 || compression != 0) {
+    if (width <= 0 || height == 0 || planes != 1 || (bitsPerPixel != 8 && bitsPerPixel != 24) || compression != 0) {
         std::cerr << "Erreur : format BMP non supporte " << path << std::endl;
         return {0, 0, {}};
     }
 
     const int absHeight = (height < 0) ? -height : height;
-    const uint32_t rowStride = static_cast<uint32_t>(width) * 3u;
-    const uint32_t paddedRowStride = (rowStride + 3u) & ~3u;
-    if (pixelOffset + static_cast<size_t>(paddedRowStride) * absHeight > bytes.size()) {
-        std::cerr << "Erreur : donnees BMP hors limites " << path << std::endl;
-        return {0, 0, {}};
-    }
-
     Image8 image;
     image.width = width;
     image.height = absHeight;
     image.data.resize(static_cast<size_t>(width) * absHeight, 0);
 
-    for (int y = 0; y < absHeight; ++y) {
-        const int srcY = (height > 0) ? (absHeight - 1 - y) : y;
-        const size_t rowOffset = pixelOffset + static_cast<size_t>(srcY) * paddedRowStride;
+    if (bitsPerPixel == 24) {
+        const uint32_t rowStride = static_cast<uint32_t>(width) * 3u;
+        const uint32_t paddedRowStride = (rowStride + 3u) & ~3u;
+        if (pixelOffset + static_cast<size_t>(paddedRowStride) * absHeight > bytes.size()) {
+            std::cerr << "Erreur : donnees BMP hors limites " << path << std::endl;
+            return {0, 0, {}};
+        }
 
-        for (int x = 0; x < width; ++x) {
-            const size_t pixelIndex = rowOffset + static_cast<size_t>(x) * 3;
-            image.data[static_cast<size_t>(y) * width + x] = bytes[pixelIndex];
+        for (int y = 0; y < absHeight; ++y) {
+            const int srcY = (height > 0) ? (absHeight - 1 - y) : y;
+            const size_t rowOffset = pixelOffset + static_cast<size_t>(srcY) * paddedRowStride;
+
+            for (int x = 0; x < width; ++x) {
+                const size_t pixelIndex = rowOffset + static_cast<size_t>(x) * 3;
+                image.data[static_cast<size_t>(y) * width + x] = bytes[pixelIndex + 2]; // Red channel
+            }
+        }
+    } else if (bitsPerPixel == 8) {
+        // 8-bit BMP with palette
+        const uint32_t paletteOffset = 54; // After 14-byte file header + 40-byte DIB header
+        const uint32_t rowStride = static_cast<uint32_t>(width);
+        const uint32_t paddedRowStride = (rowStride + 3u) & ~3u;
+        if (pixelOffset + static_cast<size_t>(paddedRowStride) * absHeight > bytes.size()) {
+            std::cerr << "Erreur : donnees BMP hors limites " << path << std::endl;
+            return {0, 0, {}};
+        }
+
+        // Read palette (256 entries, 4 bytes each: B, G, R, 0)
+        std::vector<uint8_t> palette(256 * 4);
+        if (paletteOffset + palette.size() > bytes.size()) {
+            std::cerr << "Erreur : palette BMP hors limites " << path << std::endl;
+            return {0, 0, {}};
+        }
+        std::copy(bytes.begin() + paletteOffset, bytes.begin() + paletteOffset + palette.size(), palette.begin());
+
+        for (int y = 0; y < absHeight; ++y) {
+            const int srcY = (height > 0) ? (absHeight - 1 - y) : y;
+            const size_t rowOffset = pixelOffset + static_cast<size_t>(srcY) * paddedRowStride;
+
+            for (int x = 0; x < width; ++x) {
+                const size_t pixelIndex = rowOffset + static_cast<size_t>(x);
+                const uint8_t paletteIndex = bytes[pixelIndex];
+                // Use red channel from palette
+                image.data[static_cast<size_t>(y) * width + x] = palette[paletteIndex * 4 + 2];
+            }
         }
     }
 
@@ -243,17 +298,29 @@ std::wstring utf8ToWide(const std::string& text) {
         return std::wstring();
     }
 
-    const int size = MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, nullptr, 0);
-    if (size <= 0) {
-        return std::wstring(text.begin(), text.end());
+    const int utf8Size = MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS,
+                                             text.c_str(), -1, nullptr, 0);
+    if (utf8Size > 0) {
+        std::wstring wide(static_cast<size_t>(utf8Size), L'\0');
+        MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS, text.c_str(), -1,
+                            wide.data(), utf8Size);
+        if (!wide.empty() && wide.back() == L'\0') {
+            wide.pop_back();
+        }
+        return wide;
     }
 
-    std::wstring wide(static_cast<size_t>(size), L'\0');
-    MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, wide.data(), size);
-    if (!wide.empty() && wide.back() == L'\0') {
-        wide.pop_back();
+    const int ansiSize = MultiByteToWideChar(CP_ACP, 0, text.c_str(), -1, nullptr, 0);
+    if (ansiSize > 0) {
+        std::wstring wide(static_cast<size_t>(ansiSize), L'\0');
+        MultiByteToWideChar(CP_ACP, 0, text.c_str(), -1, wide.data(), ansiSize);
+        if (!wide.empty() && wide.back() == L'\0') {
+            wide.pop_back();
+        }
+        return wide;
     }
-    return wide;
+
+    return std::wstring(text.begin(), text.end());
 }
 
 bool ensureGdiplusStarted() {
@@ -276,8 +343,10 @@ Image8 loadImagePNGWindows(const std::string& path) {
 
     const std::wstring widePath = utf8ToWide(path);
     Gdiplus::Bitmap bitmap(widePath.c_str());
-    if (bitmap.GetLastStatus() != Gdiplus::Ok) {
-        std::cerr << "Erreur : impossible d'ouvrir l'image PNG " << path << std::endl;
+    const Gdiplus::Status status = bitmap.GetLastStatus();
+    if (status != Gdiplus::Ok) {
+        std::cerr << "Erreur : impossible d'ouvrir l'image PNG " << path
+                  << " (GDI+ status=" << static_cast<int>(status) << ")" << std::endl;
         return {0, 0, {}};
     }
 
@@ -495,12 +564,27 @@ DepthImage loadDepth(const std::string& path) {
 }
 
 Image8 loadImage(const std::string& path) {
+    std::vector<uint8_t> header;
+    if (readFileHeader(path, header, 8)) {
+        if (isBmpSignature(header)) {
+            return loadImageBMPInternal(path);
+        }
+
+#ifdef _WIN32
+        if (isPngSignature(header)) {
+            return loadImagePNGWindows(path);
+        }
+#endif
+    }
+
     if (hasBmpExtension(path)) {
         return loadImageBMPInternal(path);
     }
 
 #ifdef _WIN32
     if (hasPngExtension(path)) {
+        std::cerr << "Avertissement : extension PNG detectee mais signature invalide, tentative via GDI+ "
+                  << path << std::endl;
         return loadImagePNGWindows(path);
     }
 #endif
@@ -583,5 +667,9 @@ void saveImageBMP(const Image8& img, const std::string& path) {
 }
 
 void saveImage(const Image8& img, const std::string& path) {
+    if (!hasBmpExtension(path)) {
+        std::cerr << "Avertissement : saveImage ecrit un fichier BMP, utilisez de preference une extension .bmp : "
+                  << path << std::endl;
+    }
     saveImageBMP(img, path);
 }

@@ -16,7 +16,7 @@
 
 // Allocation mémoire GPU
 template<typename T>
-T* cudaMallocManaged(size_t size) {
+T* cudaMallocManagedChecked(size_t size) {
     T* ptr;
     CUDA_CHECK(cudaMallocManaged(&ptr, size * sizeof(T)));
     return ptr;
@@ -24,24 +24,24 @@ T* cudaMallocManaged(size_t size) {
 
 // Copie vers GPU
 template<typename T>
-void cudaMemcpyToDevice(T* d_ptr, const T* h_ptr, size_t size) {
+void cudaMemcpyToDeviceChecked(T* d_ptr, const T* h_ptr, size_t size) {
     CUDA_CHECK(cudaMemcpy(d_ptr, h_ptr, size * sizeof(T), cudaMemcpyHostToDevice));
 }
 
 // Copie depuis GPU
 template<typename T>
-void cudaMemcpyToHost(T* h_ptr, const T* d_ptr, size_t size) {
+void cudaMemcpyToHostChecked(T* h_ptr, const T* d_ptr, size_t size) {
     CUDA_CHECK(cudaMemcpy(h_ptr, d_ptr, size * sizeof(T), cudaMemcpyDeviceToHost));
 }
 
 // Synchronisation
-void cudaDeviceSynchronize() {
+inline void cudaDeviceSynchronizeChecked() {
     CUDA_CHECK(cudaDeviceSynchronize());
 }
 
 // Libération mémoire
 template<typename T>
-void cudaFree(T* ptr) {
+void cudaFreeChecked(T* ptr) {
     CUDA_CHECK(cudaFree(ptr));
 }
 

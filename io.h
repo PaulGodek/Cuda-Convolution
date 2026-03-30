@@ -21,7 +21,7 @@ struct Image8 {
 DepthImage loadDepth(const std::string& path);
 
 // Supported 8-bit image formats:
-// - BMP
+// - BMP (8-bit and 24-bit)
 // - PNG on Windows
 Image8 loadImage(const std::string& path);
 
